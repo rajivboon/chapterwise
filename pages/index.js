@@ -4,6 +4,12 @@ import SuperComponet from '../components/SuperComponent';
 
 class Index extends SuperComponet {
 
+    static getInitialProps() {
+        console.log('i am getInitialProps');
+
+        return {};
+    }
+
     constructor(props) {
         super(props);
 
@@ -26,7 +32,7 @@ class Index extends SuperComponet {
     }
 
     updateTitle() {
-        debugger;
+      
         this.setState({ titiel: 'i am updated' })
      
     }
@@ -34,7 +40,7 @@ class Index extends SuperComponet {
 
 
     render() {
-        debugger;
+        
         const title = this.state.titiel;
         // const { titiel } = this.state;
     return ( 
