@@ -4,9 +4,9 @@ import BaseLayout from '../components/layouts/BaseLayout';
 class SuperComponet extends React.Component {
     
     constructor(props) {
-        debugger;
+        
         super(props);
-        debugger;
+       
         this.someVariable = 'just some variable';
     }
 

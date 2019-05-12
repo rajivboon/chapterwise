@@ -26,6 +26,7 @@ class Index extends SuperComponet {
     }
 
     updateTitle() {
+        debugger;
         this.setState({ titiel: 'i am updated' })
      
     }
@@ -33,11 +34,13 @@ class Index extends SuperComponet {
 
 
     render() {
-        console.log('render');
+        debugger;
+        const title = this.state.titiel;
+        // const { titiel } = this.state;
     return ( 
         <BaseLayout>
             <h1> This is Index page</h1>
-            <h2> {this.state.titiel}  </h2>
+            <h2> {title}  </h2>
             <button onClick={() => { this.updateTitle() }}>change titiel</button>
         </BaseLayout> 
             
