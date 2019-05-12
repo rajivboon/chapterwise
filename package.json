@@ -19,5 +19,12 @@
     "url": "https://github.com/rajivboon/chapterwise/issues"
   },
   "homepage": "https://github.com/rajivboon/chapterwise#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
+    "next": "^8.1.0",
+    "node-sass": "^4.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
 }
