@@ -1,9 +1,11 @@
-const Index = () => {
+import React from 'react';
 
-    return(
-        <div>
-            <p>Hello Next.js</p>
-        </div>
-    )
+class Index extends React.Component {
+    render() {
+    return (
+            <h1> This is Index page</h1>
+        )
+    }
 }
-export default Index
+
+export default Index;
