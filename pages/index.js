@@ -2,12 +2,23 @@ import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout';
 import SuperComponet from '../components/SuperComponent';
 
+
+class Human {
+    talk() {
+
+        console.log('i am talking');
+    }
+    static walk() {
+        console.log('i am walking')
+    }
+}
+const human = new Human();
 class Index extends SuperComponet {
 
     static getInitialProps() {
         console.log('i am getInitialProps');
 
-        return {};
+        return {initialData: [1,2,3,4]};
     }
 
     constructor(props) {
@@ -21,6 +32,9 @@ class Index extends SuperComponet {
 
     componentDidMount() {
         console.log('componentDidMount');
+        
+        human.talk();
+        Human.walk();
     }
 
     ComponentDidUpdate() {
@@ -40,9 +54,9 @@ class Index extends SuperComponet {
 
 
     render() {
-        
+        debugger;
         const title = this.state.titiel;
-        // const { titiel } = this.state;
+        const initialData = this.props.initialData;
     return ( 
         <BaseLayout>
             <h1> This is Index page</h1>
