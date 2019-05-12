@@ -10,8 +10,10 @@ class Header extends React.Component {
             <React.Fragment>
                 <p> {title} </p>
                 {this.props.children}
+
+                <p className='customClass' > I am styles P element</p>
                 <Link href="/">
-                    <a >Home</a>
+                    <a style = {{'fontSize' : '20px'}} >Home</a>
                 </Link>
 
                 <Link href="/about">
@@ -29,6 +31,18 @@ class Header extends React.Component {
                 <Link href="/cv">
                     <a>Cv</a>
                 </Link>
+
+                <style jsx>
+                    {`
+                        a {
+                            font-size: 20px;
+                        };
+                        .customClass {
+                            color: red;
+                        }
+                        
+                    `}
+                    </style>
 
             </React.Fragment>
         )
