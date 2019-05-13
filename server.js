@@ -10,6 +10,12 @@ app
     .then(() => {
         const server = express()
 
+        server.get('/portfolio/:id', (req, res) => {
+            const actualPage = '/portfolio'
+            const queryParams = { title: req.params.id }
+            app.render(req, res, actualPage, queryParams)
+        })
+
         server.get('*', (req, res) => {
             return handle(req, res)
         })
