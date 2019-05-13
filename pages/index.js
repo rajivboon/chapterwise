@@ -1,24 +1,29 @@
 import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout';
 import SuperComponet from '../components/SuperComponent';
+import axios from 'axios';
 
 
-class Human {
-    talk() {
-
-        console.log('i am talking');
-    }
-    static walk() {
-        console.log('i am walking')
-    }
-}
-const human = new Human();
 class Index extends SuperComponet {
 
-    static getInitialProps() {
-        console.log('i am getInitialProps');
+    static async getInitialProps() {
+        let userData = {};
+            
+        try {
+            const response = await axios.get("https://jsonplaceholder.typicode.com/todos/1");
+            userData =response.data;
+        } catch (error) {
+            console.error(error);
+        }
+        
 
-        return {initialData: [1,2,3,4]};
+        // axios.get("https://jsonplaceholder.typicode.com/todos/1")
+        //     .then(
+        //         (response) => console.log(response.data)
+        //     )
+        //     .catch(err => console.error(err))
+        
+        return { initialData: [1, 2, 3, 4], userData };
     }
 
     constructor(props) {
@@ -32,9 +37,7 @@ class Index extends SuperComponet {
 
     componentDidMount() {
         console.log('componentDidMount');
-        
-        human.talk();
-        Human.walk();
+                
     }
 
     ComponentDidUpdate() {
@@ -54,13 +57,15 @@ class Index extends SuperComponet {
 
 
     render() {
-        debugger;
+        
         const title = this.state.titiel;
-        const initialData = this.props.initialData;
+        const { userData, initialData } = this.props;
+        // const initialData = this.props.initialData;
     return ( 
         <BaseLayout>
             <h1> This is Index page</h1>
             <h2> {title}  </h2>
+            <h2>{userData.title}</h2>
             <button onClick={() => { this.updateTitle() }}>change titiel</button>
         </BaseLayout> 
             
