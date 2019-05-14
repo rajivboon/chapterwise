@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'Stylish-Regular';
+    src: url('/static/fonts/Stylish-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html,body {
+    font-family: 'Stylish-Regular';
+}
+
 .customClassfromfile {
     color:blue;
 }
