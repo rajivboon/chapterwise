@@ -1,5 +1,6 @@
 import auth0 from 'auth0-js';
 import Cookies from 'js-cookie';
+import axios from 'axios';
 
 class Auth {
     
@@ -67,12 +68,43 @@ class Auth {
         // Check whether the current time is past the
         // access token's expiry time
         const expiresAt = Cookies.getJSON('expiresAt');
+        // console.log(new Date().getTime() < expiresAt);   this help to know is executed in serer and the client
         return new Date().getTime() < expiresAt;
     }
 
     login() {
         this.auth0.authorize();
     }
+
+    clientAuth() {
+        
+        return this.isAuthenticated();
+    }
+
+    serverAuth(req) {
+        if (req.headers.cookie) {
+    //         // const cookies = req.headers.cookie;
+    //          const expirestAtCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('expiresAt='));
+    //    if (!expirestAtCookie) { return undefined };
+    //         const expiresAt = expirestAtCookie.split('=')[1];
+
+
+             const cookies = req.headers.cookie;
+            console.log(cookies, 'cookies');
+            const splitedCookies = cookies.split(';');
+            console.log(splitedCookies, 'splited');
+            const expiresAtCookie = splitedCookies.find(c => c.trim().startsWith('expiresAt='));
+            console.log(expiresAtCookie, 'expireat');
+            if (!expiresAtCookie) { return console.log(expiresAtCookie, 'expireat in if'); };
+            const expiresAtArray = expiresAtCookie.split('=');
+            console.log(expiresAtArray, 'exparray');
+            const expiresAt = expiresAtArray[1];
+            console.log(expiresAt, 'expAt');
+            return new Date().getTime() < expiresAt;
+
+        }
+    }
+
 }
 
 const auth0Client = new Auth();

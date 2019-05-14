@@ -14,7 +14,7 @@ app
 
        
         server.get('*', (req, res) => {
-            console.log('-------------serving all requests--------');
+            // console.log('-------------serving all requests--------');
             return handle(req, res)
         })
 
