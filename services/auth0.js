@@ -40,7 +40,7 @@ class Auth {
 
     setSession(authResult) {
        
-        debugger;
+     
         // Set the time that the Access Token will expire at
         const expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
         // this.accessToken = authResult.accessToken;
