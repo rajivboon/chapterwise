@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import auth0 from '../../services/auth0';
 import {
     Collapse,
     Navbar,
@@ -12,7 +13,7 @@ import {
 
 const Login = () => {
     return (
-        <span className="nav-link port-navbar-link clickable"> login </span>
+        <span onClick={auth0.login} className="nav-link port-navbar-link clickable"> login </span>
     )
 }
 
@@ -31,7 +32,7 @@ const BsnavLinks = (props) => {
    )
 }
 
-export default class Example extends React.Component {
+export default class Header extends React.Component {
 
 
     constructor(props) {
