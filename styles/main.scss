@@ -1,12 +1,7 @@
-@font-face {
-    font-family: 'Stylish-Regular';
-    src: url('/static/fonts/Stylish-Regular.ttf');
-    font-weight: normal;
-    font-style: normal;
-}
+@import '../styles/shared/fonts';
 
 html,body {
-    font-family: 'Stylish-Regular';
+    font-family : 'Stylish-Regular';
 }
 
 .customClassfromfile {
