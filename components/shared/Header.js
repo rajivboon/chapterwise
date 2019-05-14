@@ -1,55 +1,5 @@
-// import React from 'react';
-import Link from 'next/link';
-
-// class Header extends React.Component {
-//     render() {
-//         // debugger;
-//         const title = this.props.title;
-
-//         return (
-//             <React.Fragment>
-               
-//                 <Link href="/">
-//                     <a style = {{'fontSize' : '20px'}} >Home</a>
-//                 </Link>
-
-                // <Link href="/about">
-                //     <a>About</a>
-                // </Link>
-
-                // <Link href="/blogs">
-                //     <a >Blogs</a>
-                // </Link>
-
-                // <Link href="/portfolios">
-                //     <a >Portfolios</a>
-                // </Link>
-
-                // <Link href="/cv">
-                //     <a>Cv</a>
-                // </Link>
-
-//                 <style jsx>
-//                     {`
-//                         a {
-//                             font-size: 20px;
-//                         };
-//                         .customClass {
-//                             color: red;
-//                         }
-                        
-//                     `}
-//                     </style>
-
-//             </React.Fragment>
-//         )
-//     }
-// }
-
-// export default Header;
-
-
 import React from 'react';
+import Link from 'next/link';
 import {
     Collapse,
     Navbar,
@@ -57,16 +7,26 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink
     
 } from 'reactstrap';
 
+const Login = () => {
+    return (
+        <span className="nav-link port-navbar-link clickable"> login </span>
+    )
+}
+
+const Logout = () => {
+    return (
+        <span className="nav-link port-navbar-link clickable"> logout </span>
+    )
+}
 
 const BsnavLinks = (props) => {
    const { route, title } = props;
    return (
        <Link href={route}>
-           <a className="nav-link port-navbar-likn">{title} </a>
+           <a className="nav-link port-navbar-likn ">{title} </a>
        </Link>
    )
 }
@@ -114,7 +74,14 @@ export default class Example extends React.Component {
 
                             <NavItem className="port-navbar-item">
                                 <BsnavLinks route="/cv" title="Cv" />
-                            </NavItem>                         
+                            </NavItem>
+
+                            <NavItem className="port-navbar-item">
+                                <Login />
+                            </NavItem>
+                            <NavItem className="port-navbar-item">
+                                <Logout />
+                            </NavItem>
                         </Nav>
                     </Collapse>
                 </Navbar>
