@@ -1,9 +1,12 @@
 @import '../styles/shared/fonts';
 
-html,body {
-    font-family : 'Stylish-Regular';
+// pages
+@import '../styles/shared/index';
+
+
+html, body {
+  height:100%;
+  width:100%;
+  font-family : 'Stylish-Regular';
 }
 
-.customClassfromfile {
-    color:blue;
-}
