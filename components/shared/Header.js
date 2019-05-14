@@ -66,7 +66,7 @@ const BsnavLinks = (props) => {
    const { route, title } = props;
    return (
        <Link href={route}>
-           <a className="nav-link">{title} </a>
+           <a className="nav-link port-navbar-likn">{title} </a>
        </Link>
    )
 }
@@ -90,8 +90,8 @@ export default class Example extends React.Component {
     render() {
         return (
             <div>
-                <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">Rajiv</NavbarBrand>
+                <Navbar className=" port-navbar port-default absolute " color="transparent" dark expand="md">
+                    <NavbarBrand className="port-navbar-brand " href="/">Rajiv</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
@@ -99,20 +99,20 @@ export default class Example extends React.Component {
                             {/* <Link href="/about">
                                 <a className="nav-link">About</a>
                             </Link> */}
-                            <NavItem>
+                            <NavItem className="port-navbar-item">
                             <BsnavLinks route="/" title="Home" />
                             </NavItem>
-                            <NavItem>
+                            <NavItem className="port-navbar-item">
                                 <BsnavLinks route="/about" title="About" />
                             </NavItem>
-                            <NavItem>
+                            <NavItem className="port-navbar-item">
                                 <BsnavLinks route="/blogs" title="Blogs" />
                             </NavItem>
-                            <NavItem>
+                            <NavItem className="port-navbar-item">
                                 <BsnavLinks route="/portfolios" title="portfolios" />
                             </NavItem>
 
-                            <NavItem>
+                            <NavItem className="port-navbar-item">
                                 <BsnavLinks route="/cv" title="Cv" />
                             </NavItem>                         
                         </Nav>

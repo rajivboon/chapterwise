@@ -3,6 +3,9 @@
 // pages
 @import '../styles/shared/index';
 
+// components
+@import '../styles/shared/header';
+
 
 html, body {
   height:100%;
@@ -10,3 +13,6 @@ html, body {
   font-family : 'Stylish-Regular';
 }
 
+.absolute {
+  position: absolute;
+}
