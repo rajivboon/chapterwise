@@ -9,12 +9,7 @@ class Header extends React.Component {
 
         return (
             <React.Fragment>
-                <p> {title} </p>
-                {this.props.children}
-
-                <p className='customClass' > I am styles P element</p>
-                <p className='customClassfromfile' > I am styles P element</p>
-
+               
                 <Link href="/">
                     <a style = {{'fontSize' : '20px'}} >Home</a>
                 </Link>
