@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'reactstrap';
 class Index extends React.Component {
    
     render() {
-    
+        const { isAuthenticated, user } = this.props.auth;
         
     return (         
         <BaseLayout className="cover" {...this.props.auth}>
@@ -37,7 +37,7 @@ class Index extends React.Component {
                             <Col md="6" className="hero-welcome-wrapper">
                                 <div className="hero-welcome-text">
                                     <h1>
-                                        Welcome to the portfolio website of Filip Jerga.
+                                        {isAuthenticated && <span>{user.name}</span>} Welcome to the portfolio website of Filip Jerga.
                                         Get informed, collaborate and discover projects I was working on through the years!
             </h1>
                                 </div>

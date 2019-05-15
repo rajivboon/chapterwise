@@ -20,8 +20,7 @@ class Auth {
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
         this.handleAuthentication = this.handleAuthentication.bind(this);
-        this.isAuthenticated = this.isAuthenticated.bind(this);
-
+        
     }
 
     handleAuthentication() {
@@ -70,14 +69,7 @@ class Auth {
         this.auth0.authorize();
     }
 
-    isAuthenticated() {
-        // Check whether the current time is past the
-        // access token's expiry time
-        const expiresAt = Cookies.getJSON('expiresAt');
-        // console.log(new Date().getTime() < expiresAt);   this help to know is executed in serer and the client
-        return new Date().getTime() < expiresAt;
-    }
-
+   
     verifyToken(token) {
         if (token) {
             const decodedToken = jwt.decode(token);
@@ -89,6 +81,7 @@ class Auth {
     }
 
     clientAuth() {
+        // debugger;
         const token = Cookies.getJSON('jwt');
         const verifiedToken = this.verifyToken(token);
         return verifiedToken;
