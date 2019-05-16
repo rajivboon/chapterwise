@@ -1,6 +1,8 @@
 import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout';
 import BasePage from '../components/Basepage';
+import withAuth from '../components/hoc/withAuth';
+
 
 class About extends React.Component {
     render() {
@@ -16,4 +18,4 @@ class About extends React.Component {
     }
 }
 
-export default About;
+export default withAuth (About);
