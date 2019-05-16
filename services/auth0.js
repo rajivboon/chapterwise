@@ -32,9 +32,8 @@ class Auth {
                     resolve();
                 } else if (err) {
                     reject(err)
-                    // history.replace('/home');
+                    
                     console.log(err);
-                    // alert(`Error: ${err.error}. Check the console for further details.`);
                 }
             });
         })
@@ -42,12 +41,8 @@ class Auth {
 
     setSession(authResult) {
 
-
-        // Set the time that the Access Token will expire at
-        const expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
-        // this.accessToken = authResult.accessToken;
-        // this.idToken = authResult.idToken;
-        // this.expiresAt = expiresAt;
+ const expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
+      
 
 
         Cookies.set('user', authResult.idTokenPayload);
@@ -82,19 +77,13 @@ class Auth {
             const decodedToken = jwt.decode(token, { complete: true });
             
             if (!decodedToken) { return undefined; }
-            const jwks = await this.getJWKS();
-            // console.log(jwks);
-            const jwk = jwks.keys[0];
-            console.log(jwk);
+            const jwks = await this.getJWKS();           
+            const jwk = jwks.keys[0];           
             //BUILD CERTIFICATE
             let cert = jwk.x5c[0];
             cert = cert.match(/.{1,64}/g).join('\n');
             cert = `-----BEGIN CERTIFICATE-----\n${cert}\n-----END CERTIFICATE-----\n`;
-            // console.log(cert);
-            // // 
-            // console.log('jwk', jwk.kid);
-            // console.log('decodedToken', decodedToken.header.kid);
-           
+        //    
             if ( jwk.kid === decodedToken.header.kid ) {  
                 try {
                     const verifiedToken = jwt.verify(token, cert);                    
@@ -116,8 +105,6 @@ class Auth {
     }
     async serverAuth(req) {
         if (req.headers.cookie) {
-            //  const tokenCookie = req.headers.cookie;
-            //  console.log(tokenCookie, 'tokencookies');
             const tokenCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('jwt='));
             if (!tokenCookie) { return undefined };
             const token = tokenCookie.split('=')[1];
