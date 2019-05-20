@@ -1,18 +1,31 @@
 const express = require('express')
 const next = require('next')
-const routes = require('./routes')
+const routes = require('../routes')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = routes.getRequestHandler(app)
 
+const secretData = [
+    {
+        title: 'seredafd data 1',
+        description: 'plans how to build '
+    },
+    {
+        title: 'sercond data 2',
+        description: ' tsfg sdggh build '
+    }
+]
 
-app
-    .prepare()
+app.prepare()
     .then(() => {
         const server = express();
 
-       
+        server.get('/api/v1/secret', (req, res) => {
+            return res.json(secretData);
+        } )
+
+
         server.get('*', (req, res) => {
             // console.log('-------------serving all requests--------');
             return handle(req, res)
