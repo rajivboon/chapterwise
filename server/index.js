@@ -27,7 +27,7 @@ app.prepare()
         server.get('/api/v1/secret', authService.checkJWT, (req, res) => {
             console.log('-------------consoling User----------------');
             // console.log(req.user);
-            // return res.json(secretData);
+            return res.json(secretData);
         } )
 
 
@@ -35,6 +35,12 @@ app.prepare()
             // console.log('-------------serving all requests--------');
             return handle(req, res)
         })
+
+        // server.use(function (err, req, res, next) {
+        //     if (err.name === 'UnauthorizedError') {
+        //         res.status(401).send({title: 'unauthorized', detail: 'unauthorized access!'});
+        //     }
+        // });
 
         server.use(handle).listen(3000, err => {
             if (err) throw err

@@ -5,11 +5,11 @@ const jwksRsa = require('jwks-rsa');
 
 // Middle weare
 exports.checkJWT = jwt({
-    secret: jwksRsa({
+    secret: jwksRsa.expressJwtSecret({
         cache: true,
         rateLimit: true,// cacheMaxEntries: 5, // Default value
         jwksRequestsPerMinute: 15,// cacheMaxAge: ms('10h'), // Default value
-        jwksUri: 'https://sandrino.auth0.com/.well-known/jwks.json'
+        jwksUri: 'https://quickmarriages.auth0.com/.well-known/jwks.json/'
     }),
 
     audience: '0ijPBeMRqJHNBxvQoQ9BeI7tde5qLqnQ',
