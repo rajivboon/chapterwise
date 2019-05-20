@@ -3,7 +3,7 @@ import BaseLayout from '../components/layouts/BaseLayout';
 import BasePage from '../components/Basepage';
 
 import withAuth from '../components/hoc/withAuth';
-import axios from 'axios';
+import { getSecretData } from '../actions/index';
 
 class Secret extends React.Component {
 
@@ -25,9 +25,8 @@ class Secret extends React.Component {
     }
 
     async componentDidMount() {
-        const res = await axios.get('/api/v1/secret');
-         const secretData = res.data;
-
+        const secretData = await getSecretData();
+         
         this.setState({
             secretData
         });
