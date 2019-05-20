@@ -3,13 +3,18 @@ import BaseLayout from '../components/layouts/BaseLayout';
 import BasePage from '../components/Basepage';
 
 import withAuth from '../components/hoc/withAuth';
-import { getSecretData } from '../actions/index';
+import { getSecretData, getSecretDataServer } from '../actions/index';
 
 class Secret extends React.Component {
 
-    static getInitialProps() {
-        const superSecretValue = 'super secret value';
-        return { superSecretValue };
+    static async getInitialProps({req}) {
+        const anotherSecretData = await getSecretData(req);
+        
+        //  1.const anotherSecretData = process.browser ? await getSecretData() : await getSecretDataServer(req) ;
+
+        // console.log(anotherSecretData);
+
+        return { anotherSecretData };
     }
 
     // constructor(props) {
@@ -27,6 +32,7 @@ class Secret extends React.Component {
     async componentDidMount() {
         const secretData = await getSecretData();
          
+        // debugger;
         this.setState({
             secretData
         });
