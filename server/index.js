@@ -25,7 +25,9 @@ app.prepare()
         const server = express();
 
         server.get('/api/v1/secret', authService.checkJWT, (req, res) => {
-            return res.json(secretData);
+            console.log('-------------consoling User----------------');
+            // console.log(req.user);
+            // return res.json(secretData);
         } )
 
 
