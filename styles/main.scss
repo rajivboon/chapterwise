@@ -1,10 +1,16 @@
 @import '../styles/shared/fonts';
 
+// colors
+@import '../styles/shared/colors';
+
+
 // pages
 @import '../styles/shared/index';
 
 // components
 @import '../styles/shared/header';
+
+
 
 
 html, body {
@@ -17,13 +23,26 @@ html, body {
   position: absolute;
 }
 
-.base-page {
-    padding-top: 150px;
-    color: wheat;
-
-}
 
 .clickable{
 
     cursor: pointer;
+}
+
+
+
+.base-page {
+  padding-top: 150px;
+  color: white;
+  background-color: #ecedee;
+  min-height: 100vh;
+
+  .page-header {
+    .page-header-title {
+      font-weight: 700;
+      color: black;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+  }
 }
