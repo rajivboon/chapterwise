@@ -5,8 +5,32 @@ import PortInput from '../form/Portinput';
 
 
 
-const validateInputs = (validate) => {
+const validateInputs = (values) => {
+
     let errors = {};
+
+    // 2. const entries = Object.entries(values); // this get Array values(object of a key and value)
+    // debugger;
+
+    // 1. Object.keys(values).forEach((key) => {       // (explanation)const keyArray = Object.keys(values);
+        // console.log(key);                       // keyArray.forEach(() =>{});
+        
+    Object.entries(values).forEach(([key, value]) => {   //forEach(([objectKey])
+        // debugger;
+        if (!values[key]) {
+            errors[key] = `Field ${key} is required!!!`
+        }
+    });
+
+
+
+                                                            // if (!values.title) {
+                                                            //     errors.title='Title is required!!!'
+                                                            // }
+
+                                                            // if (!values.company) {
+                                                            //     errors.company = 'Company is required!!!'
+                                                            // }
 
     // if (!values.email) {
     //     errors.email = 'Required';
@@ -15,7 +39,7 @@ const validateInputs = (validate) => {
     // ) {
     //     errors.email = 'Invalid email address';
     // }
-    // return errors;
+    return errors;
 }
 
 const INITIAL_VALUES = {
@@ -32,10 +56,7 @@ const PortfolioCreateForm = (props) => (
     <div>        
         <Formik
             initialValues={INITIAL_VALUES}
-            validate={values => {
-                let errors = {};
-               
-            }}
+            validate={validateInputs}
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
                     alert(JSON.stringify(values, null, 2));
