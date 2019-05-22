@@ -1,5 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Button,  FormGroup, Label, Input, FormText } from 'reactstrap';
+
 
 
 const validateInputs = (validate) => {
@@ -42,47 +44,47 @@ const PortfolioCreateForm = (props) => (
         >
             {({ isSubmitting }) => (
                 <Form>
-                    <div>
-                    <label>Title</label>
-                    <Field type="text" name="title" />
+                    <FormGroup>
+                    <Label>Title</Label>
+                    <Field className="form-control" type="text" name="title" />
                     <ErrorMessage name="title" component="div" />
-                    </div>
+                    </FormGroup>
 
-                    <div>
-                        <label>company</label>
-                    <Field type="text" name="company" />
+                    <FormGroup>
+                        <Label>company</Label>
+                        <Field className="form-control" type="text" name="company" />
                     <ErrorMessage name="company" component="div" />
-                    </div>
+                    </FormGroup>
 
-                    <div>
-                        <label>location</label>
-                    <Field type="text" name="location" />
+                    <FormGroup>
+                        <Label>location</Label>
+                        <Field className="form-control" type="text" name="location" />
                     <ErrorMessage name="location" component="div" />
-                    </div>
+                    </FormGroup>
                 
-                    <div>
-                        <label>position</label>
-                    <Field type="text" name="position" />
+                    <FormGroup>
+                        <Label>position</Label>
+                        <Field className="form-control" type="text" name="position" />
                     <ErrorMessage name="position" component="div" />
-                    </div>
+                    </FormGroup>
 
-                    <div>
-                        <label>description</label> 
-                        <Field type="textarea" name="description" component="textarea" />
+                    <FormGroup>
+                        <Label>description</Label> 
+                        <Field className="form-control" type="textarea" name="description" component="textarea" />
                     <ErrorMessage name="description" component="div" />
-                    </div>
+                    </FormGroup>
 
-                    <div>
-                        <label>startDate</label>
-                        <Field type="text" name="startDate" />
+                    <FormGroup>
+                        <Label>startDate</Label>
+                        <Field className="form-control" type="text" name="startDate" />
                         <ErrorMessage name="startDate" component="div" />
-                    </div>
+                    </FormGroup>
 
-                    <div>
-                        <label>endDate</label>
-                        <Field type="text" name="endDate" />
+                    <FormGroup>
+                        <Label>endDate</Label>
+                        <Field className="form-control" type="text" name="endDate" />
                         <ErrorMessage name="endDate" component="div" />
-                    </div>
+                    </FormGroup>
 
 
                     <button type="submit" disabled={isSubmitting}>
@@ -95,68 +97,3 @@ const PortfolioCreateForm = (props) => (
 );
 
 export default PortfolioCreateForm;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import react from 'react';
-
-
-// export default class PortfolioCreateForm extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = { title: '', description: '', language: '' };  //Value:
-
-//         this.handleChange = this.handleChange.bind(this);       
-//         this.handleSubmit = this.handleSubmit.bind(this);
-//     }
-
-//     handleChange(event) {       
-//         // debugger;
-//         const field = event.target.name;
-//         this.setState({ [field]: event.target.value });
-//     }
-   
-//     handleSubmit(event) {
-//         alert('A name was submitted: ' + this.state.title + ' ' + this.state.description + ' ' + this.state.language );
-//         event.preventDefault();
-//     }
-
-//     render() {        
-//         return (
-//             <form onSubmit={this.handleSubmit}>
-//                 <label>
-//                     Name:
-//           <input name="title" type="text" value={this.state.value} onChange={this.handleChange} />
-//                 </label>
-//                 <label>
-//                     Discription:
-//                   <textarea name="description" value={this.state.description} onChange={this.handleChange} />
-//                 </label>
-//                 <label>
-//                     Pick your favorite Language:
-//           <select name="language" value={this.state.language} onChange={this.handleChange}>
-//                         <option value="javascript">Javascript</option>
-//                         <option value="java">Java</option>
-//                         <option value="c++">C++</option>
-//                         <option value="c#">C#</option>
-//                     </select>
-//                 </label>
-//                 <input type="submit" value="Submit" />
-//             </form>
-//         );
-//     }
-// }
