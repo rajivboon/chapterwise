@@ -12,7 +12,7 @@ class PortfolioNew extends React.Component {
         return (
             <BaseLayout {...this.props.auth}>
                 <BasePage title="Create New PortfolioNew " className="portfolio-create-page" >
-                    <PortfolioCreateForm />
+                    <PortfolioCreateForm onClick={(someVariables) => {console.log(someVariables)} } />
                 </BasePage>
             </BaseLayout>
 

@@ -1,11 +1,10 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-const PortfolioCreateForm = () => (
-   
-
+const PortfolioCreateForm = (props) => (
 
     <div>
+        <button onClick={() => props.onClick('just some ordinary strting')}> click me !!!!!!!!!</button>
         <h1>Any place in your app!</h1>
         <Formik
             initialValues={{ email: '', password: '' }}
