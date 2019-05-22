@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Button,  FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, FormGroup, Label } from 'reactstrap';
+import PortInput from '../form/Portinput';
 
 
 
@@ -43,53 +44,37 @@ const PortfolioCreateForm = (props) => (
             }}
         >
             {({ isSubmitting }) => (
-                <Form>
-                    <FormGroup>
-                    <Label>Title</Label>
-                    <Field className="form-control" type="text" name="title" />
-                    <ErrorMessage name="title" component="div" />
-                    </FormGroup>
+                <Form>                    
+                    <Field type="text" name="title" label="Title" component={PortInput} />
+                     
+                    
+                    <Field type="text" name="company" label="company" component={PortInput} />
+                   
 
-                    <FormGroup>
-                        <Label>company</Label>
-                        <Field className="form-control" type="text" name="company" />
-                    <ErrorMessage name="company" component="div" />
-                    </FormGroup>
-
-                    <FormGroup>
-                        <Label>location</Label>
-                        <Field className="form-control" type="text" name="location" />
-                    <ErrorMessage name="location" component="div" />
-                    </FormGroup>
+                    
+                    <Field type="text" name="location" label="location" component={PortInput} />
+                    
                 
-                    <FormGroup>
-                        <Label>position</Label>
-                        <Field className="form-control" type="text" name="position" />
-                    <ErrorMessage name="position" component="div" />
-                    </FormGroup>
+                   
+                    <Field type="text" name="position" label="position" component={PortInput} />
+                    
 
-                    <FormGroup>
-                        <Label>description</Label> 
-                        <Field className="form-control" type="textarea" name="description" component="textarea" />
-                    <ErrorMessage name="description" component="div" />
-                    </FormGroup>
+                  
+                    <Field type="textarea" name="description" label="description" component="textarea" component={PortInput} />
+                   
 
-                    <FormGroup>
-                        <Label>startDate</Label>
-                        <Field className="form-control" type="text" name="startDate" />
-                        <ErrorMessage name="startDate" component="div" />
-                    </FormGroup>
+                    
+                    <Field type="text" name="startDate"  component={PortInput} />
+                        
 
-                    <FormGroup>
-                        <Label>endDate</Label>
-                        <Field className="form-control" type="text" name="endDate" />
-                        <ErrorMessage name="endDate" component="div" />
-                    </FormGroup>
+                   
+                    <Field  type="text" name="endDate" component={PortInput} />
+                        
 
 
-                    <button type="submit" disabled={isSubmitting}>
+                    <Button type="submit" disabled={isSubmitting}>
                         Submit
-          </button>
+          </Button>
                 </Form>
             )}
         </Formik>
