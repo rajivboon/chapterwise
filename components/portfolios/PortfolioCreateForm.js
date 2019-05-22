@@ -9,13 +9,6 @@ import PortDate from '../form/PortDate';
 const validateInputs = (values) => {
 
     let errors = {};
-
-    // 2. const entries = Object.entries(values); // this get Array values(object of a key and value)
-    // debugger;
-
-    // 1. Object.keys(values).forEach((key) => {       // (explanation)const keyArray = Object.keys(values);
-        // console.log(key);                       // keyArray.forEach(() =>{});
-        
     Object.entries(values).forEach(([key, value]) => {   //forEach(([objectKey])
         // debugger;
         if (!values[key]) {
