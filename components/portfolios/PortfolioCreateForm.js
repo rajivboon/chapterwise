@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Button, FormGroup, Label } from 'reactstrap';
 import PortInput from '../form/Portinput';
+import PortDate from '../form/PortDate';
 
 
 
@@ -21,24 +22,6 @@ const validateInputs = (values) => {
             errors[key] = `Field ${key} is required!!!`
         }
     });
-
-
-
-                                                            // if (!values.title) {
-                                                            //     errors.title='Title is required!!!'
-                                                            // }
-
-                                                            // if (!values.company) {
-                                                            //     errors.company = 'Company is required!!!'
-                                                            // }
-
-    // if (!values.email) {
-    //     errors.email = 'Required';
-    // } else if (
-    //     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-    // ) {
-    //     errors.email = 'Invalid email address';
-    // }
     return errors;
 }
 
@@ -85,11 +68,11 @@ const PortfolioCreateForm = (props) => (
                    
 
                     
-                    <Field type="text" name="startDate"  component={PortInput} />
+                    <Field  name="startDate" label="Start Date"  component={PortDate} />
                         
 
                    
-                    <Field  type="text" name="endDate" component={PortInput} />
+                    <Field name="endDate" label="End Date" component={PortDate} />
                         
 
 
