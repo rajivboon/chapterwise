@@ -1,5 +1,6 @@
 const express = require('express');
 const next = require('next');
+const mongoose = require('mongoose');
 const routes = require('../routes');
 
 // service
@@ -19,6 +20,11 @@ const secretData = [
         description: ' tsfg sdggh build '
     }
 ]
+
+mongoose.connect('mongodb+srv://test:testtest@cluster0-rgrft.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true })
+    .then(() => console.log('Database Connected'))
+    .catch(err => console.error(err));
+  
 
 app.prepare()
     .then(() => {
