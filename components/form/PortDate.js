@@ -1,14 +1,14 @@
 import React from "react";
 import DatePicker from "react-datepicker";
-import { FormGroup, Label } from 'reactstrap';
+import { FormGroup, Label, Button } from 'reactstrap';
 import "react-datepicker/dist/react-datepicker.css";
-import moment from 'moment';
 
 export default class PortDate extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            dateValue: new Date()
+            dateValue: new Date(),
+            isHidden: false
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -31,28 +31,39 @@ export default class PortDate extends React.Component {
         
     }
 
+    toggleDate() {
+        this.setState({
+            isHidden: !this.state.isHidden
+        })
+    }
+ 
     render() {
         const { isBrowserLoaded } = this.state;
-        const { label } = this.props;
+        const { label, field, isHidden, form: {touched, errors} } = this.props;
+        // const { touched, errors } = this.props.form;
 
         return (
             <React.Fragment>
                 <FormGroup>
                     <Label>{label} </Label>
-                    <div className="input-group">
+            <div className="input-group">
 
-                {isBrowserLoaded && <DatePicker
+                        {!isHidden && isBrowserLoaded &&  <DatePicker
                     selected={this.state.dateValue}
                             onChange={this.handleChange}
                             peekNextMonth
                             showMonthDropdown
                             scrollableYearDropdown
-                            maxDate={moment()}
+                            maxDate={new Date}
                             dropdownMode="select"
-                />
-            }
-            </div>
-        </FormGroup>
+                        />
+                            
+                    }
+                    </div>
+                    {!isHidden && <Button onClick={() => this.toggleDate() }> Still Working Here...</Button>}
+                    {touched[field.name] &&
+                    errors[field.name] && <div className="error">{errors[field.name]}</div>}
+                </FormGroup>
             </React.Fragment>
         );
     }
