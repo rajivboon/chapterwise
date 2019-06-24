@@ -11,10 +11,11 @@ const app = next({ dev });
 const handle = routes.getRequestHandler(app);
 const config = require('./config');
 
-const Book = require('./models/book');
+// const Book = require('./models/book');
 const bodyParser = require('body-parser');
 
 const bookRoutes = require('./routes/book');
+const portfolioRoutes = require('./routes/portfolio');
 
 const secretData = [
     {
@@ -39,6 +40,7 @@ app.prepare()
         server.use(bodyParser.json());
 
         server.use('/api/v1/books', bookRoutes);
+        server.use('/api/v1/portfolios', portfolioRoutes);
 
         server.get('/api/v1/secret', authService.checkJWT, (req, res) => {
             console.log('-------------consoling User----------------');
