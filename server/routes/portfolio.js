@@ -11,9 +11,7 @@ router.post('', authService.checkJWT,
                 authService.checkRole('siteOwner'),
                  portfolioCtrl.savePortfolio);
 
-router.get('', authService.checkJWT,
-                authService.checkRole('siteOwner'),
-                portfolioCtrl.getPortfolios);
+router.get('', portfolioCtrl.getPortfolios);
                 
 router.patch('/:id', authService.checkJWT,
     authService.checkRole('siteOwner'),
