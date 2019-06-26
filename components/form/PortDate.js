@@ -69,7 +69,7 @@ export default class PortDate extends React.Component {
                 {canBeDisabled && isHidden &&
                     <React.Fragment>
                         <span> Still Working Here</span>
-                        <Button onClick={() => this.ToggleDate(dateValue)}>Set End Date</Button>
+                        <Button onClick={() => this.toggleDate(dateValue)}>Set End Date</Button>
                     </React.Fragment>
                 }
                 {touched[field.name] &&

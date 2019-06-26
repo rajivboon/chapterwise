@@ -9,33 +9,46 @@ import { Row, Col } from 'reactstrap';
 import { createPortfolio } from '../actions';
 
 import withAuth from '../components/hoc/withAuth';
+import { Router } from '../routes';
 
 
 class PortfolioNew extends React.Component {
 
     constructor(props) {
         super();
+
+        this.state = {
+            error: undefined
+        }
         this.savePortfolio = this.savePortfolio.bind(this);
     }
 
-    savePortfolio(portfolioData) {
-        // alert(JSON.stringify(portfolioData, null, 2));
+    savePortfolio(portfolioData, { setSubmitting }) {
+        setSubmitting(true);
+
         createPortfolio(portfolioData)
             .then((portfolio) => {
-                debugger;
-            console.log(portfolio);
+                setSubmitting(false);
+                this.setState({ error: undefined })
+                Router.pushRoute('/portfolio');
             })
-            .catch((err) => { console.error(err) }) 
+            .catch((err) => {
+                const error = err.message || 'Server Error!';
+                setSubmitting(false);
+                this.setState({ error });
+        }) 
     }
 
     render() {
+        const { error } = this.state;
+
         return (
             <BaseLayout {...this.props.auth}>
                 <BasePage title="Create New PortfolioNew " className="portfolio-create-page" >
                    
                     <Row>
                         <Col md="6">
-                            <PortfolioCreateForm onSubmit={this.savePortfolio} />
+                            <PortfolioCreateForm error={error} onSubmit={this.savePortfolio} />
                         </Col>
                     </Row>   
                 </BasePage>
