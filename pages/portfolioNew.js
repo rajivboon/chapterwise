@@ -6,10 +6,28 @@ import PortfolioCreateForm from '../components/portfolios/PortfolioCreateForm';
 
 import { Row, Col } from 'reactstrap';
 
+import { createPortfolio } from '../actions';
+
 import withAuth from '../components/hoc/withAuth';
 
 
 class PortfolioNew extends React.Component {
+
+    constructor(props) {
+        super();
+        this.savePortfolio = this.savePortfolio.bind(this);
+    }
+
+    savePortfolio(portfolioData) {
+        // alert(JSON.stringify(portfolioData, null, 2));
+        createPortfolio(portfolioData)
+            .then((portfolio) => {
+                debugger;
+            console.log(portfolio);
+            })
+            .catch((err) => { console.error(err) }) 
+    }
+
     render() {
         return (
             <BaseLayout {...this.props.auth}>
@@ -17,7 +35,7 @@ class PortfolioNew extends React.Component {
                    
                     <Row>
                         <Col md="6">
-                            <PortfolioCreateForm />
+                            <PortfolioCreateForm onSubmit={this.savePortfolio} />
                         </Col>
                     </Row>   
                 </BasePage>

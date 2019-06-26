@@ -1,12 +1,12 @@
 import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout';
-import { getPortfolios } from '../actions';
 import { Link } from '../routes'
 import BasePage from '../components/Basepage';
 import {
     Card, CardText, CardBody, CardHeader,
     CardTitle, Row, Col,
 } from 'reactstrap';
+import { getPortfolios } from '../actions';
 
 
 class Portfolios extends React.Component {
