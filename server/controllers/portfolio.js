@@ -13,15 +13,18 @@ exports.getPortfolios = (req, res) => {
 
 exports.getPortfolioById = (req, res) => {
     const portfolioId = req.params.id;
-    
-    Portfolio.findById(portfolioId, (err, foundPortfolio) => {
-        if (err) {
-            return res.status(422).send(err);
-        }
-        return res.json(foundPortfolio);
-    })
-}
 
+    Portfolio.findById(portfolioId)
+        .select('-__v')
+        .exec((err, foundPortfolio) => {
+            if (err) {
+                return res.status(422).send(err);
+            }
+            return res.json(foundPortfolio);
+        });
+}
+    
+  
 exports.savePortfolio = (req, res) => {
     const portfolioData = req.body;
     // console.log(portfolioData);
@@ -55,14 +58,14 @@ exports.updatePortfolio = (req, res) => {
     })
 }
 
-exports.deletePortfolio = (req, res) => {
-    const portfolioId = req.params.id;
+    exports.deletePortfolio = (req, res) => {
+        const portfolioId = req.params.id;
 
-    Portfolio.deleteOne({ _id: portfolioId }, (err, deletedPortfolio) => {
-        if (err) {
-            return res.status(422).send(err);
-        }
+        Portfolio.deleteOne({ _id: portfolioId }, (err, deletedPortfolio) => {
+            if (err) {
+                return res.status(422).send(err);
+            }
 
-        return res.json({ status: 'Delited' });
-    })
-}
+            return res.json({ status: 'Delited' });
+        })
+    }

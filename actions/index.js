@@ -46,3 +46,9 @@ export const createPortfolio = async (portfolioData) => {
         .then(response => response.data)
         .catch(error => rejectPromise(error))
 }
+
+export const updatePortfolio = async (portfolioData) => {
+    return await axiosInstance.patch(`/portfolios/${portfolioData._id}`, portfolioData, setAuthHeader())
+        .then(response => response.data)
+        .catch(error => rejectPromise(error))
+}
