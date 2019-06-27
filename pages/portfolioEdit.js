@@ -23,7 +23,7 @@ class PortfolioEdit extends React.Component {
             console.error(err);
         }
 
-        console.log(portfolio);
+        
         return { portfolio };
     }
 
@@ -54,6 +54,7 @@ class PortfolioEdit extends React.Component {
 
     render() {
         const { error } = this.state;
+        const { portfolio } = this.props;
 
         return (
             <BaseLayout {...this.props.auth}>
@@ -61,7 +62,9 @@ class PortfolioEdit extends React.Component {
 
                     <Row>
                         <Col md="6">
-                            <PortfolioCreateForm error={error} onSubmit={this.savePortfolio} />
+                            <PortfolioCreateForm initialValues={portfolio}
+                                                error={error}
+                                                onSubmit={this.savePortfolio} />
                         </Col>
                     </Row>
                 </BasePage>
