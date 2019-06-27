@@ -4,9 +4,10 @@ import { Link } from '../routes'
 import BasePage from '../components/Basepage';
 import {
     Card, CardText, CardBody, CardHeader,
-    CardTitle, Row, Col,
+    CardTitle, Row, Col, Button
 } from 'reactstrap';
 import { getPortfolios } from '../actions';
+import { Router } from '../routes';
 
 
 class Portfolios extends React.Component {
@@ -37,7 +38,15 @@ class Portfolios extends React.Component {
                                     <p className="portfolio-card-city"> {portfolio.location} </p>
                                     <CardTitle className="portfolio-card-title">{portfolio.title} </CardTitle>
                                     <CardText className="portfolio-card-text"> {portfolio.description} </CardText>
-                                    <div className="readMore"> </div>
+                                    <div className="readMore">
+                                        {
+                                            <React.Fragment>
+
+                                                <Button onClick={() => Router.pushRoute(`/portfolios/${portfolio._id}/edit`)} color="warning"  > Edit</Button> {'  '}
+                                                <Button color="danger"> Update </Button>
+                                            </React.Fragment>
+                                    }
+                                    </div>
                                 </CardBody>
                             </Card>
                         </span>
@@ -53,7 +62,12 @@ class Portfolios extends React.Component {
         return (
             <BaseLayout {...this.props.auth}>
                 <BasePage className="portfolio-page" title="Portfolios">
-                <Row>
+                    <Button onClick={() => Router.pushRoute('/portfolioNew')}
+                        color="success"
+                        className="create-port-btn">Create portfolio
+                    </Button>
+                    
+                    <Row>
                     {this.renderPortfolios(portfolios)}
                     {/* {posts.map((post) => {
                         return (
