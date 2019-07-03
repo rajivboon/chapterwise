@@ -1,13 +1,16 @@
 const Portfolio = require('../models/portfolio');
 
 exports.getPortfolios = (req, res) => {
-    // console.log('I am in get Route!!!')
-    Portfolio.find({}, (err, allPortfolios) => {
+
+    Portfolio.find({})
+        .sort({ 'startDate': 1 })
+        .exec((err, allPortfolios) => {
         if (err) {
             return res.status(422).send(err);
         }
         return res.json(allPortfolios);
     });
+
 }
 
 
