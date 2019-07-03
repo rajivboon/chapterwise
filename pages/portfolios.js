@@ -24,8 +24,14 @@ class Portfolios extends React.Component {
 
     }
 
+    navigateToEdit(portfolioId, e) {
+        e.stopPropagation();
+        Router.pushRoute(`/portfolios/${portfolioId}/edit`)
+    }
 
-    displayDeleteWarning(portfolioId) {
+
+    displayDeleteWarning(portfolioId, e) {
+        e.stopPropagation();
         const isConfirm = confirm('Are you sure you want to delete this portfolio ?');
 
         if (isConfirm) {
@@ -52,8 +58,8 @@ class Portfolios extends React.Component {
                         {isAuthenticated && isSiteOwner &&
                             <React.Fragment>
 
-                                <Button onClick={() => Router.pushRoute(`/portfolios/${portfolio._id}/edit`)} color="warning"  > Edit</Button> {'  '}
-                                <Button onClick={() => this.displayDeleteWarning(portfolio._id)} color="danger"> Delete </Button>
+                                <Button onClick={(e) => this.navigateToEdit(portfolio._id, e )} color="warning"  > Edit</Button> {'  '}
+                                <Button onClick={(e) => this.displayDeleteWarning(portfolio._id, e )} color="danger"> Delete </Button>
                             </React.Fragment>
                         }
 
